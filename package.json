@@ -1,0 +1,28 @@
+{
+  "name": "ptyep",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-css": "sass --watch ./src/scss:./src/css",
+    "watch-ts": "tsc -w",
+    "build": "tsc && sass ./src/scss:./src/css --style compressed",
+    "gen-qst": "node ./genQst.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Whiterzi/ptyep.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Whiterzi/ptyep/issues"
+  },
+  "homepage": "https://github.com/Whiterzi/ptyep#readme",
+  "devDependencies": {
+    "sass": "^1.83.0",
+    "typescript": "^5.7.2"
+  }
+}
