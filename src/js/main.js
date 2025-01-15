@@ -20,7 +20,7 @@ function toPrev() {
 }
 function setBackgroundImage(imageUrl) {
     if (displayUnit) {
-        displayUnit.style.backgroundImage = `url(/ptyep${imageUrl})`;
+        displayUnit.style.backgroundImage = `url(${imageUrl})`;
     }
 }
 function setContentText(text) {

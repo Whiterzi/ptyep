@@ -29,7 +29,7 @@ function toPrev() {
 
 function setBackgroundImage(imageUrl: string) {
   if (displayUnit) {
-      displayUnit.style.backgroundImage = `url(/ptyep${imageUrl})`;
+      displayUnit.style.backgroundImage = `url(${imageUrl})`;
   }
 }
 
