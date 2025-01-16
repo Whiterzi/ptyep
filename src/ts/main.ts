@@ -94,6 +94,9 @@ function tryRenderScore() {
     const item = groupList.children().eq(i);
     const score = totalScore[i];
     item.find('.score').text(`${score} 分`);
+
+    if (playedTeams.has(i))
+      item.addClass('played');
   }
 }
 
@@ -130,7 +133,11 @@ function endGame() {
   isEnd = true;
 
   totalScore[currentGroupIndex] = currentScore;
+
+  playedTeams.add(currentGroupIndex);
 }
+
+const playedTeams = new Set<number>();
 
 function backToHome() {
   gameViewUnit?.classList.add('hide');
@@ -143,7 +150,9 @@ function init() {
   questions = genQuestionGroup(3);
 
   $(homeViewUnit!).on('click', '.group-list > li', (e) => {
-    const target = e.target as HTMLLIElement;
+    const target = e.currentTarget as HTMLLIElement;
+    if (target.classList.contains('played')) return;
+
     const index = $('.group-list').children().index(target);
     currentGroupIndex = index;
 

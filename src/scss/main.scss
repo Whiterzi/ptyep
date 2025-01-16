@@ -5,12 +5,16 @@ body {
   margin: 0;
 
   background-color: #72636E;
-  background-image: url("../imgs/texture.png");
   color: #FCFAF2;
 
   --button-color: #70649A;
   --color-red: #D75455;
   --color-green: #5DAC81;
+  --disabled-color: #91989F;
+
+  * {
+    background-image: url("../imgs/texture.png");
+  }
 
   .flex-container {
     display: flex;
@@ -55,6 +59,10 @@ body {
         flex-direction: column;
         gap: 10px;
 
+        &.played {
+          cursor: default;
+          background-color: var(--disabled-color);
+        }
       }
     }
 
@@ -157,6 +165,7 @@ body {
       height: 40px;
       line-height: 40px;
       border-radius: 5px;
+      cursor: pointer;
     }
     
     .correct-btn {

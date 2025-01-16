@@ -50,7 +50,6 @@ function setContentText(text, isHard) {
     contentUnit.dataset.point = isHard ? '2' : '1';
 }
 function rerender() {
-    console.log(questions[currentGroupIndex]);
     const currentQuestion = questions[currentGroupIndex][currentQuestionIndex];
     setContentText(currentQuestion, (currentQuestionIndex + 1) % 3 == 0);
     if (counterUnit)
@@ -77,6 +76,8 @@ function tryRenderScore() {
         const item = groupList.children().eq(i);
         const score = totalScore[i];
         item.find('.score').text(`${score} 分`);
+        if (playedTeams.has(i))
+            item.addClass('played');
     }
 }
 let questions = genQuestionGroup(3);
@@ -107,7 +108,9 @@ function endGame() {
     $('.back-btn').removeClass('hide');
     isEnd = true;
     totalScore[currentGroupIndex] = currentScore;
+    playedTeams.add(currentGroupIndex);
 }
+const playedTeams = new Set();
 function backToHome() {
     gameViewUnit === null || gameViewUnit === void 0 ? void 0 : gameViewUnit.classList.add('hide');
     homeViewUnit === null || homeViewUnit === void 0 ? void 0 : homeViewUnit.classList.remove('hide');
@@ -116,7 +119,9 @@ function backToHome() {
 function init() {
     questions = genQuestionGroup(3);
     $(homeViewUnit).on('click', '.group-list > li', (e) => {
-        const target = e.target;
+        const target = e.currentTarget;
+        if (target.classList.contains('played'))
+            return;
         const index = $('.group-list').children().index(target);
         currentGroupIndex = index;
         initGame();
