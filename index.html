@@ -4,19 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>var exports = {};</script>
-  <script type="module" src="/src/js/qstlist.js"></script>
-  <script type="module" src="/src/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="/src/css/main.css">
+  <script type="module" src="./src/js/main.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./src/css/main.css">
   <title>YEP</title>
 </head>
 <body>
-    <div class="main-container">
-      <div class="main-img"></div>
-      <div class="main-content"></div>
+    <div class="home-view flex-container">
+      <div class="home-view-title">哇嘎哩貢</div>
+      <ul class="group-list flex-container">
+        <li data-index="0" class="button-style">
+          <div>A組</div>
+          <div class="score">0 分</div>
+        </li>
+        <li data-index="1" class="button-style">
+          <div>B組</div>
+          <div class="score">0 分</div>
+        </li>
+        <li data-index="2" class="button-style">
+          <div>C組</div>
+          <div class="score">0 分</div>
+        </li>
+      </ul>
     </div>
-    <div class="button-action-row">
-      <div class="prev-btn">prev</div>
-      <div class="next-btn">next</div>
+    <div class="game-view hide">
+      <div class="main-container flex-container">
+        <div class="main-content"></div>
+        <div class="level-counter">0</div>
+        <div class="score-counter">0 pts</div>
+        <div class="answer-status"></div>
+      </div>
+      <div class="button-action-row flex-container">
+        <div class="prev-btn hide button-style">prev</div>
+        <div class="next-btn hide button-style">next</div>
+        <div class="pass-btn button-style">PASS</div>
+        <div class="correct-btn button-style">Correct</div>
+        <div class="score-btn button-style">成績結算</div>
+      </div>
+      <div class="back-btn hide">←</div>
     </div>
 </body>
 </html>

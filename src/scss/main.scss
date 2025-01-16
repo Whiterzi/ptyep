@@ -1,17 +1,78 @@
 body {
   height: 100vh;
+  padding-top: 5%;
+  box-sizing: border-box;
   margin: 0;
 
-  background-color: #947A6D;
+  background-color: #72636E;
+  background-image: url("../imgs/texture.png");
   color: #FCFAF2;
 
-  .button-action-row,
-  .main-container {
+  --button-color: #70649A;
+  --color-red: #D75455;
+  --color-green: #5DAC81;
+
+  .flex-container {
     display: flex;
   }
 
+  .button-style {
+    justify-content: center;
+    background-color: var(--button-color);
+    text-align: center;
+    border-radius: 5%;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .home-view {
+    gap: 30px;
+
+    .home-view-title {
+      font-size: 50px;
+      font-weight: 700;
+    }
+
+    ul {
+      flex-direction: row;
+      list-style: none;
+      height: 200px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+
+      li {
+        margin: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+
+      }
+    }
+
+    .score-btn {
+      width: 150px;
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+
+  .home-view,
+  .game-view {
+    height: 100%;
+  }
+
+  .home-view,
   .main-container {
-    margin: 2% auto;
+    margin: auto;
     justify-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -20,35 +81,107 @@ body {
     width: 80%;
     border: white 2px solid;
     border-radius: 10px;
+  }
 
-    .main-img {
-      height: 80%;
-      width: 80%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
+  .game-view {
+    .back-btn {
+      position: absolute;
+      top: 1%;
+      left: 2%;
+      font-size: 30px;
+      user-select: none;
+      cursor: pointer;
     }
 
-    .main-content {
-      font-size: 40px;
-      font-weight: 700;
+    .main-container {
+      margin-bottom: 20px;
+      position: relative;
+      .main-content {
+        font-size: 60px;
+        font-weight: 700;
+  
+        &.hard + .level-counter::after {
+          content: "(2分)";
+          color: var(--color-red);
+        }
+      }
+  
+      .answer-status,
+      .level-counter,
+      .score-counter {
+        position: absolute;
+        font-size: 30px;
+      }
+  
+      .score-counter {
+        right: 1%;
+        top: 1%;
+      }
+  
+      .level-counter {
+        left: 1%;
+        top: 1%;
+  
+        &::after {
+          content: "(1分)";
+          color: var(--color-green);
+          margin-left: 10px;
+        }
+      }
+  
+      .answer-status {
+        bottom: 1%;
+        right: 2%;
+        font-size: 80px;
+  
+        &.correct {
+          color: var(--color-green);
+        }
+  
+        &.passed {
+          color: var(--color-red);
+        }
+      }
     }
   }
 
   .button-action-row {
-    gap: 10px;
+    margin: auto;
+    width: 80%;
+    gap: 50px;
     justify-content: center;
+    position: relative;
 
     > div {
       width: 80px;
       height: 40px;
-      text-align: center;
       line-height: 40px;
-      cursor: pointer;
       border-radius: 5px;
-
-      background-color: #808F7C;
-      user-select: none;
     }
+    
+    .correct-btn {
+      background-color: var(--color-green);
+    }
+
+    .pass-btn {
+      background-color: var(--color-red);
+    }
+
+    .correct-btn,
+    .pass-btn {
+      &.disabled {
+        background-color: gray;
+        cursor: default;
+      }
+    }
+
+    .score-btn {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .hide {
+    display: none;
   }
 }
